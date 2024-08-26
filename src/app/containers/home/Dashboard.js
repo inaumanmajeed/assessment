@@ -1,7 +1,12 @@
+import ThoughtsBookMainComponent from "app/components/todo/TodoCardMain";
 import React from "react";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <ThoughtsBookMainComponent />
+    </>
+  );
 };
 
 export default Dashboard;

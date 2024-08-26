@@ -1,5 +1,7 @@
+// firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCGLj262AsV2P5dKcRnNvGgcI1ZXkWLxRw",
@@ -11,13 +13,10 @@ const firebaseConfig = {
   measurementId: "G-PT9T6CZKSN",
 };
 
-let authLogin = null;
+const firebaseApp = initializeApp(firebaseConfig);
+const authLogin = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
 
-try {
-  const firebaseApp = initializeApp(firebaseConfig);
-  authLogin = getAuth(firebaseApp);
-} catch (error) {
-  console.error("Error initializing Firebase:", error);
-}
+console.log("Firebase initialized successfully");
 
-export { authLogin };
+export { authLogin, db };
