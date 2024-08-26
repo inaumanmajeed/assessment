@@ -8,7 +8,7 @@ const CustomInputMainContainer = styled("div")(
     gap: "8px",
     width: width ? width : "100%",
     position: "relative",
-    marginBottom: noMargin ? "0" : "12px",
+    marginBottom: "12px",
 
     "& label": {
       fontSize: "14px",
@@ -21,7 +21,7 @@ const CustomInputMainContainer = styled("div")(
       backgroundColor: "#eeeeee",
       border: "1px solid transparent",
       outline: "none",
-      marginBottom: noMargin ? "0" : "6px",
+      marginBottom: "6px",
       "&::placeholder": {
         color: "#6C757D80",
         fontSize: "12px",
@@ -38,13 +38,14 @@ const CustomInputMainContainer = styled("div")(
   })
 );
 
-const CustomBTN = styled(Button)(({ theme }) => ({
+const CustomBTN = styled(Button)(({ theme, width }) => ({
   height: "28px",
   minWidth: "120px",
   padding: "8px",
   borderRadius: "4px",
   backgroundColor: "#fbfbfb66",
   color: "#fff",
+  width: width ? width : "100%",
   fontWeight: "500",
   backdropFilter: "blur(10px)",
   "&:hover": {

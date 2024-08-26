@@ -8,11 +8,13 @@ const CustomButton = ({
   disabled = false,
     className,
   BtnCenter = false,
+  width,
   ...props
 }) => {
     return (
       <BTNcenter BtnCenter={BtnCenter}>
         <CustomBTN
+          width={width}
           onClick={onClick}
           type={type}
           disabled={disabled}
