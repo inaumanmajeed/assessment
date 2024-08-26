@@ -6,12 +6,6 @@ const LoginComponent = () => {
   return (
     <>
       <Field
-        type="text"
-        name="userName"
-        placeholder="Username"
-        component={CustomInput}
-      />
-      <Field
         type="email"
         name="email"
         placeholder="Email"

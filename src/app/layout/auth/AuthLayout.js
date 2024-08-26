@@ -30,12 +30,12 @@ const AuthLayout = ({ children, title, login, register, reset }) => {
             {register && (
               <NavigateLinks>
                 <span onClick={() => navigate("/reset")}>Having Trouble?</span>
-                <span onClick={() => navigate("/login")}>Login</span>
+                <span onClick={() => navigate("/")}>Login</span>
               </NavigateLinks>
             )}
             {reset && (
               <NavigateLinks>
-                <span onClick={() => navigate("/login")}>Login</span>
+                <span onClick={() => navigate("/")}>Login</span>
                 <span onClick={() => navigate("/register")}>Register</span>
               </NavigateLinks>
             )}
