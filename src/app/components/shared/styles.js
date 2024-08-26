@@ -28,8 +28,8 @@ const CustomInputMainContainer = styled("div")(({ theme }) => ({
   },
   "& .error": {
     fontSize: "11px",
-    color: "#d90429",
-    fontWeight: "500",
+    color: "#fff",
+    fontWeight: "400",
     position: "absolute",
     bottom: "-12px",
     zIndex: "1",
@@ -41,11 +41,12 @@ const CustomBTN = styled(Button)(({ theme }) => ({
   minWidth: "120px",
   padding: "8px",
   borderRadius: "4px",
-  backgroundColor: "#407bff",
+  backgroundColor: "#fbfbfb66",
   color: "#fff",
   fontWeight: "500",
+  backdropFilter: "blur(10px)",
   "&:hover": {
-    backgroundColor: "#5388ff",
+    backgroundColor: "#fbfbfb66",
   },
 }));
 
