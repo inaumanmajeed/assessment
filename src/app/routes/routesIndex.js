@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoutes";
 
 const Login = lazy(() => import("app/containers/auth/Login"));
 const Register = lazy(() => import("app/containers/auth/Register"));
@@ -14,7 +15,7 @@ const RoutesMain = () => {
           path="/dashboard"
           element={
             <Suspense fallback={<div>Loading...</div>}>
-              <Dashboard />
+              <ProtectedRoute element={Dashboard} />
             </Suspense>
           }
         />

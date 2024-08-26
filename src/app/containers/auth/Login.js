@@ -6,7 +6,7 @@ import CustomButton from "app/components/shared/CustomButton";
 import LoginComponent from "app/components/auth/LoginComponent";
 import { authLogin } from "app/firebase/index";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const initialValues = {
