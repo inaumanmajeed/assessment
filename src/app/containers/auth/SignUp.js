@@ -5,17 +5,18 @@ import { validationSchema } from "app/utils/Validations";
 import CustomButton from "app/components/shared/CustomButton";
 import LoginComponent from "app/components/auth/LoginComponent";
 import { authLogin } from "app/firebase/index";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import {  toast } from "react-toastify";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const initialValues = {
   email: "",
   password: "",
 };
 
-const Login = () => {
+const register = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSignedUp, setIsSignedUp] = useState(false);
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
@@ -23,20 +24,24 @@ const Login = () => {
 
     try {
       // Send data to the backend
-      await signInWithEmailAndPassword(authLogin, email, password);
-      console.log("User signed in successfully");
-
+      await createUserWithEmailAndPassword(authLogin, email, password);
+      setIsSignedUp(true);
+      console.log("User signed up successfully");
       setIsSubmitted(true);
-      toast.success("User signed in successfully");
-      navigate("/dashboard");
+      toast.success("User signed up successfully");
     } catch (error) {
-      console.error("Error signing in:", error);
-      toast.error("Invalid email or password");
+      console.error("Error signing up:", error);
+      toast.error("Error creating account");
+      setIsSignedUp(false);
     }
   };
 
+  if (isSignedUp) {
+    navigate("/login");
+  }
+
   return (
-    <AuthLayout login title={"Login"}>
+    <AuthLayout register title={"register"}>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -46,7 +51,7 @@ const Login = () => {
           <Form className="form__main">
             <LoginComponent />
             <CustomButton
-              title={isSubmitted ? "LoggedIn" : "Login"}
+              title={isSubmitted ? "Signed Up" : "register"}
               type="submit"
               BtnCenter
               disabled={isSubmitted}
@@ -58,4 +63,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default register;
