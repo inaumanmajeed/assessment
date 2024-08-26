@@ -1,16 +1,65 @@
 .main__container {
   position: relative;
   width: 60%;
+  height: 80%;
 }
 
+.add-todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.subtitle__main {
+  color: #fff;
+  font-size: 1.3rem;
+  width: 100%;
+  text-align: center;
+}
+.add-btn {
+  position: absolute;
+  right: 11%;
+  top: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  z-index: 111;
+  width: 20px;
+  height: 20px;
+}
+.add-todo-title {
+  color: #fff;
+  font-size: 1.3rem;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+.add-todo-title:before {
+  content: "";
+  background: #fff;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+.add-todo-title:hover::before {
+  width: 100%;
+}
 .container__content {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .input___main {
@@ -21,10 +70,9 @@
   border-radius: 10px 10px 0 0;
 }
 .list___main {
-  width: 90%;
-  text-align: center;
-  height: 60vh;
-  padding: 20px 50px;
+  width: 80%;
+  height: 70%;
+  margin-top: 10px;
   overflow-y: auto;
   border-radius: 0 0 10px 10px;
   scrollbar-width: 0px;
@@ -61,8 +109,8 @@ h2 {
   position: relative;
   transition: all 0.5s ease-in-out;
 }
-h2:before{
-  content: '';
+h2:before {
+  content: "";
   background: #fff;
   position: absolute;
   bottom: -3px;
@@ -71,17 +119,16 @@ h2:before{
   height: 3px;
   transition: all 0.3s ease-in-out;
 }
-h2:hover::before{
+h2:hover::before {
   width: 100%;
 }
 
-
 .input__box {
-  /* position: relative; */
+  position: relative;
   width: 100%;
   margin-bottom: 10px;
-  justify-content: center;
-  /* display: flex; */
+  justify-content: flex-start;
+  display: flex;
 }
 
 .todo__input__box {
@@ -104,11 +151,31 @@ h2:hover::before{
   border: 1.5px solid rgba(255, 0, 0, 0.641);
   outline: none;
 }
+.todo__text__box {
+  width: 100%;
+  text-align: left;
+  color: #fff;
+}
+.todo__button__box img {
+  cursor: pointer;
+}
+
+.adjustments__input__edit .todo__button__box {
+  top: 10px;
+}
+
+.adjustments__input__edit .todo__button__box img {
+   background-image: url('data:image/svg+xml;base64,...');
+  filter: invert(32%) sepia(89%) saturate(398%) hue-rotate(309deg) brightness(95%) contrast(94%);
+}
+
 .todo__button__box {
   display: flex;
-  height: 0px;
-  justify-content: flex-end;
-  align-items: center;
+  gap: 10px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 35px;
 }
 .layout_adjustments {
   display: flex;

@@ -18,7 +18,7 @@ const ThoughtsBookMainComponent = () => {
         </div>
         <div className="container__content">
           <AddTodo />
-          <h2>Memories</h2>
+          <h2 className="subtitle__main">Memories</h2>
           <TodoList />
         </div>
       </div>

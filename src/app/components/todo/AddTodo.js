@@ -1,9 +1,10 @@
-// AddTodo.js
 import React, { useState } from "react";
 import { db } from "app/firebase/index";
 import { collection, addDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import "app/assets/css/styles.css";
+import CustomInput from "../shared/Input";
+import DoneIcon from "app/assets/images/dashboard/done.svg";
 
 const AddTodo = () => {
   const [todoText, setTodoText] = useState("");
@@ -38,19 +39,20 @@ const AddTodo = () => {
   };
 
   return (
-    <div className="add-todo">
-      <input
-        type="text"
-        value={todoText}
-        onChange={(e) => setTodoText(e.target.value)}
-        placeholder="Enter a new todo"
-        className="todo-input"
-      />
-      <button type="button" onClick={handleAddTodo} className="add-btn">
-        Add Todo
-      </button>
-      {error && <p className="error-message">{error}</p>}
-    </div>
+    <>
+      <h1 className="add-todo-title">Lemme Listen to your Thoughts</h1>
+      <div className="add-todo">
+        <CustomInput
+          noMargin
+          width={"80%"}
+          value={todoText}
+          onChange={(e) => setTodoText(e.target.value)}
+          placeholder="Enter a new Thought"
+          error={error}
+        />
+        <img src={DoneIcon} onClick={handleAddTodo} className="add-btn" />
+      </div>
+    </>
   );
 };
 

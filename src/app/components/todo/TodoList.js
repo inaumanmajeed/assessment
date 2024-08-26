@@ -10,6 +10,10 @@ import {
 import { getAuth } from "firebase/auth";
 import { db } from "app/firebase/index";
 import "app/assets/css/styles.css";
+import CustomInput from "../shared/Input";
+import EditIcon from "app/assets/images/dashboard/edit.svg";
+import DeleteIcon from "app/assets/images/dashboard/delete.svg";
+import SaveIcon from "app/assets/images/dashboard/done.svg";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -44,7 +48,6 @@ const TodoList = () => {
       }
     );
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [auth.currentUser]);
 
@@ -99,13 +102,15 @@ const TodoList = () => {
   return (
     <div className="list___main">
       {todos.map((todo) => (
-        <li key={todo.id} className="input__box">
+        <li
+          key={todo.id}
+          className={`input__box ${
+            editableTodoId === todo.id ? "adjustments__input__edit" : ""
+          }`}
+        >
           {editableTodoId === todo.id ? (
-            <input
-              className="todo__input__box"
-              type="text"
+            <CustomInput
               value={todo.text}
-              onBlur={(e) => handleSaveClick(todo.id, e.target.value)}
               onChange={(e) =>
                 setTodos((prevTodos) =>
                   prevTodos.map((t) =>
@@ -113,6 +118,8 @@ const TodoList = () => {
                   )
                 )
               }
+              onBlur={(e) => handleSaveClick(todo.id, e.target.value)}
+              placeholder="Edit todo"
               autoFocus
             />
           ) : (
@@ -125,29 +132,28 @@ const TodoList = () => {
           )}
           <div className="todo__button__box">
             {editableTodoId === todo.id ? (
-              <button
+              <img
+                src={SaveIcon}
+                alt="Save"
                 type="button"
                 className="save__btn"
                 onClick={() => handleSaveClick(todo.id, todo.text)}
-              >
-                Save
-              </button>
+              />
             ) : (
-              <button
-                type="button"
+              <img
+                src={EditIcon}
+                alt="Edit"
                 className="edit__btn"
                 onClick={() => handleEditClick(todo.id)}
-              >
-                Edit
-              </button>
+              />
             )}
-            <button
+            <img
+              src={DeleteIcon}
+              alt="Delete"
               type="button"
               className="delete__btn"
               onClick={() => handleDeleteClick(todo.id)}
-            >
-              Delete
-            </button>
+            />
           </div>
         </li>
       ))}

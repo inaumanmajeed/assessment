@@ -7,15 +7,25 @@ const CustomInput = ({
   isEditable = false,
   type = "text",
   label,
+  placeholder,
+  width,
+  noMargin,
   ...props
 }) => {
+  const hasError = form && form.errors && form.errors[field.name];
+  const isTouched = form && form.touched && form.touched[field.name];
+
   return (
-    <CustomInputMainContainer>
-      <label>{label}</label>
-      <input disabled={isEditable} {...field} type={type} {...props} />
-      {form.errors[field.name] && form.touched[field.name] ? (
-        <div className="error">{form.errors[field.name]}</div>
-      ) : null}
+    <CustomInputMainContainer noMargin width={width}>
+      {label && <label>{label}</label>}
+      <input
+        disabled={isEditable}
+        {...field}
+        type={type}
+        placeholder={placeholder}
+        {...props}
+      />
+      {hasError && isTouched && <div className="error">{hasError}</div>}
     </CustomInputMainContainer>
   );
 };
