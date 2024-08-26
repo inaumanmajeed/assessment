@@ -1,16 +1,22 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { authLogin } from "app/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const ProtectedRoute = () => {
-  const [user, loading] = useAuthState(authLogin);
+const ProtectedRoute = ({ children }) => {
+  const [user, loading, error] = useAuthState(authLogin);
+//   console.log("🚀 ~ ProtectedRoute ~ user:", user);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  return user ? <Outlet /> : <Navigate to="/login" />;
+  if (error) {
+    console.error("Firebase authentication error:", error);
+    return <div>Error while loading authentication state.</div>;
+  }
+
+  return user ? children : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;

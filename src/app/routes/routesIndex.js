@@ -14,9 +14,9 @@ const RoutesMain = () => {
         <Route
           path="/dashboard"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
-              <ProtectedRoute element={Dashboard} />
-            </Suspense>
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
           }
         />
         <Route
